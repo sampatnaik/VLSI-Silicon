@@ -34,8 +34,12 @@ module tb ();
       			CS = 1'b1;
       			temp_set_8b = `USER_TEMP_SET;
       			LM70_TEMP_IN = {1'b0,temp_set_8b[7:1],8'd0};
-   
-      //$monitor("time= %0t;data[]=,CS=%b,CLK=%b,SIO=%b,",$time,CS,CLK,SIO);
+   			#20
+			CS = 0;
+			#170
+			CS=1;
+			$monitor("time= %0t;data[]=,CS=%b,CLK=%b,SIO=%b,",$time,CS,CLK,SIO);
+			#20
       			$finish(2);   
     	end
 //////////////////////////////////////////////////////////////////////////////
